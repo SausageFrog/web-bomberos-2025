@@ -11,17 +11,17 @@ export function Header() {
               <span className="text-white font-bold">BT</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Cuerpo de jdajdksjdjdklsaj Temuco</h1>
-              <p className="text-sm text-gray-600">“Labor Omnia Vincit” – Todo lo Vence el Trabajo</p>
+              <h1 className="text-xl font-bold text-gray-900">Cuerpo de Bomberos de Temuco</h1>
+              <p className="text-sm text-gray-600">“Desde 1900, al servicio de la comunidad”</p>
             </div>
           </div>
           
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="text-gray-700 hover:text-red-600 transition-colors">Home</a>
-            <a href="#services" className="text-gray-700 hover:text-red-600 transition-colors">Services</a>
-            <a href="#about" className="text-gray-700 hover:text-red-600 transition-colors">About</a>
-            <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Fire Safety</a>
-            <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contact</a>
+            <a href="#home" className="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
+            <a href="#services" className="text-gray-700 hover:text-red-600 transition-colors">Institución</a>
+            <a href="#about" className="text-gray-700 hover:text-red-600 transition-colors">Noticias</a>
+            <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Organización</a>
+            <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
           </nav>
 
           <Button className="bg-red-600 hover:bg-red-700 text-white">

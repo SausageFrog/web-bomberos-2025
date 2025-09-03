@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Phone, Shield, Clock } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import Background from "./img/BomberosTemucoHero.png";
 
 export function HeroSection() {
   return (
@@ -9,7 +10,7 @@ export function HeroSection() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1626195212486-5d547a51a1f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXJlZmlnaHRlciUyMHRydWNrJTIwZW1lcmdlbmN5fGVufDF8fHx8MTc1Njc1MDcwN3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`
+          backgroundImage: `url(${Background})`,
         }}
       ></div>
       
@@ -17,13 +18,14 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              Protegiendo a nuestra comunidad
-              <span className="block text-red-300">24/7</span>
+              Cuerpo de Bomberos de Temuco
+              <span className="block text-red-300">Primera Compañia</span>
             </h1>
-            <p className="text-xl mb-8 text-gray-200">
-              Activo con los incendios.
-            </p>
-            
+            <h4 className="text-4xl lg:text-6xl font-bold mb-6">
+              "Labor Omnia Vincit” – Todo lo Vence el Trabajo"
+              <span className="block text-blue-300">Fundada el 22 de Julio de 1900</span>
+            </h4>
+
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
                 <Phone className="w-5 h-5 mr-2" />

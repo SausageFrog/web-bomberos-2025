@@ -6,6 +6,7 @@ import { FireSafetySection } from "./components/FireSafetySection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 
+// <ContactSection />
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
@@ -15,7 +16,6 @@ export default function App() {
         <ServicesSection />
         <AboutSection />
         <FireSafetySection />
-        <ContactSection />
       </main>
       <Footer />
     </div>
