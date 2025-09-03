@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
 import { Phone } from "lucide-react";
+import logo from "./img/logo1compañia.png";
 
 export function Header() {
   return (
@@ -7,8 +8,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold">BT</span>
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img src={logo} alt="Logo" className="w-12 h-12" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">Cuerpo de Bomberos de Temuco</h1>
