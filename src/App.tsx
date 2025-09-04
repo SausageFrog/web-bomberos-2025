@@ -3,8 +3,9 @@ import { HeroSection } from "./components/HeroSection";
 import { ServicesSection } from "./components/ServicesSection";
 import { AboutSection } from "./components/AboutSection";
 import { FireSafetySection } from "./components/FireSafetySection";
-import { ContactSection } from "./components/ContactSection";
+//import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { DonationSection } from "./components/DonationSection";
 
 // <ContactSection />
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <ServicesSection />
         <AboutSection />
         <FireSafetySection />
+        <DonationSection />
       </main>
       <Footer />
     </div>
