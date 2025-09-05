@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Phone } from "lucide-react";
-import logo from "./img/logo1compañia.png";
+import logo from "./img/logo_CBT_1600_2.png";
+import { site } from "../content/site";
 
 export function Header() {
   return (
@@ -12,25 +13,31 @@ export function Header() {
               <img src={logo} alt="Logo" className="w-12 h-12" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Cuerpo de Bomberos de Temuco</h1>
-              <p className="text-sm text-gray-600">“Desde 1900, al servicio de la comunidad”</p>
+              <h1 className="text-xl font-bold text-gray-900">{site.organization.name}</h1>
+              <p className="text-sm text-gray-600">
+                {site.company.displayName} · {site.company.foundedOn}
+              </p>
             </div>
           </div>
-          
-          <nav className="hidden md:flex items-center space-x-8">
+
+          <nav className="hidden md:flex items-center space-x-6">
             <a href="#home" className="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
-            <a href="#services" className="text-gray-700 hover:text-red-600 transition-colors">Institución</a>
-            <a href="#about" className="text-gray-700 hover:text-red-600 transition-colors">Noticias</a>
-            <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Organización</a>
+            <a href="#company" className="text-gray-700 hover:text-red-600 transition-colors">Compañía</a>
+            <a href="#services" className="text-gray-700 hover:text-red-600 transition-colors">Servicios</a>
+            <a href="#authorities" className="text-gray-700 hover:text-red-600 transition-colors">Autoridades</a>
+            <a href="#units" className="text-gray-700 hover:text-red-600 transition-colors">Unidades</a>
+            <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Seguridad</a>
+            <a href="#donate" className="text-gray-700 hover:text-red-600 transition-colors">Donaciones</a>
             <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
           </nav>
 
           <Button className="bg-red-600 hover:bg-red-700 text-white">
             <Phone className="w-4 h-4 mr-2" />
-            Emergencias: 132
+            Emergencias: {site.emergency.number}
           </Button>
         </div>
       </div>
     </header>
   );
 }
+

@@ -4,34 +4,34 @@ import { Flame, Shield, Heart, Truck, Users, AlertTriangle } from "lucide-react"
 const services = [
   {
     icon: Flame,
-    title: "Fire Suppression",
-    description: "Rapid response to structural fires, wildfires, and emergency situations with state-of-the-art equipment and trained personnel."
-  },
-  {
-    icon: Heart,
-    title: "Emergency Medical Services",
-    description: "Life-saving medical care and transport services with certified EMTs and paramedics available 24/7."
-  },
-  {
-    icon: Shield,
-    title: "Fire Prevention",
-    description: "Educational programs, safety inspections, and community outreach to prevent fires before they start."
-  },
-  {
-    icon: Truck,
-    title: "Hazardous Materials",
-    description: "Specialized response to chemical spills, gas leaks, and other hazardous material incidents."
+    title: "Combate de incendios",
+    description: "Respuesta rápida a incendios estructurales, forestales y emergencias relacionadas, con material y entrenamiento permanente.",
   },
   {
     icon: Users,
-    title: "Rescue Operations",
-    description: "Technical rescue services including vehicle extrication, water rescue, and high-angle rescue operations."
+    title: "Rescate y extricación",
+    description: "Apoyo técnico en rescate vehicular, búsqueda y otras emergencias especializadas según coordinación del Cuerpo.",
+  },
+  {
+    icon: Shield,
+    title: "Prevención y educación",
+    description: "Charlas, difusión y actividades de prevención para la comunidad, establecimientos y organizaciones.",
+  },
+  {
+    icon: Truck,
+    title: "Apoyo logístico",
+    description: "Abastecimiento, apoyo de agua y coordinación con otras compañías y organismos de respuesta.",
+  },
+  {
+    icon: Heart,
+    title: "Primeros auxilios básicos",
+    description: "Primera respuesta y asistencia inicial hasta la llegada de servicios especializados, según protocolos.",
   },
   {
     icon: AlertTriangle,
-    title: "Disaster Response",
-    description: "Coordinated response to natural disasters, mass casualty incidents, and large-scale emergencies."
-  }
+    title: "Respuesta a emergencias",
+    description: "Coordinación en eventos mayores y desastres, en apoyo al Sistema de Protección Civil.",
+  },
 ];
 
 export function ServicesSection() {
@@ -39,11 +39,9 @@ export function ServicesSection() {
     <section id="services" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Our Services
-          </h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Servicios</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We provide comprehensive fire and emergency services to protect and serve our community
+            Comprometidos con la protección, prevención y apoyo a nuestra comunidad
           </p>
         </div>
 
@@ -68,3 +66,4 @@ export function ServicesSection() {
     </section>
   );
 }
+
