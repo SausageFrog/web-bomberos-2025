@@ -32,7 +32,7 @@ export function Header() {
           </nav>
 
           <Button className="bg-red-600 hover:bg-red-700 text-white">
-            <Phone className="w-4 h-4 mr-2" />
+            <Phone className="w-8 h-4 mr-2" />
             Emergencias: {site.emergency.number}
           </Button>
         </div>
