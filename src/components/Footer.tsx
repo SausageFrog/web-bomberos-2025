@@ -62,7 +62,7 @@ export function Footer() {
 
             <div>
               <h4 className="font-semibold mb-4">Contacto</h4>
-              <div className="space-y-4">
+              <div className="fixed top-1/2 right-4 bg-gray-900 text-white p-4 rounded shadow-lg z-50">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-red-400" />
                   <div>
