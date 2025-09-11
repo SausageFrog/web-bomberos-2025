@@ -1,0 +1,53 @@
+{
+  "meta": { "source": "CB Temuco (compilado)", "updated": "2025-09-11" },
+  "codes": [
+    { "key": "0-0",  "label": "Silenciar transmisiones hasta nueva orden", "tags": ["general"] },
+    { "key": "0-6",  "label": "Diríjase al lugar con alarmas",          "tags": ["general"] },
+    { "key": "0-7",  "label": "Llegue al lugar sin alarmas",            "tags": ["general"] },
+
+    { "key": "5-3",  "label": "Frecuencia de trabajo CBT",              "tags": ["general"] },
+
+    { "key": "6-7",  "label": "Situación controlada",                   "tags": ["general"] },
+    { "key": "6-8",  "label": "Disponible/operativa la máquina",        "tags": ["general"] },
+    { "key": "6-9",  "label": "Retorno a cuartel",                      "tags": ["general"] },
+
+    { "key": "10-0", "label": "Llamado estructural",                    "tags": ["llamados"] },
+    { "key": "10-1", "label": "Llamado de vehículo",                     "tags": ["llamados"] },
+    { "key": "10-2", "label": "Pastizales/matorrales o basura",          "tags": ["llamados"] },
+    { "key": "10-3", "label": "Rescate personas atrapadas",              "tags": ["rescate"] },
+    { "key": "10-3-7", "label": "Rescate en ascensor",                  "tags": ["rescate"] },
+    { "key": "10-4", "label": "Rescate vehicular",                       "tags": ["rescate"] },
+    { "key": "10-4-1", "label": "Rescate vehicular con hasta 3 lesionados", "tags": ["rescate"] },
+    { "key": "10-4-2", "label": "Rescate vehicular con múltiples lesionados o >3 vehículos", "tags": ["rescate"] },
+    { "key": "10-4-6", "label": "Rescate vehicular con camión 3/4 o hazmat", "tags": ["rescate"] },
+    { "key": "10-4-7", "label": "Rescate vehicular con vehículos de Bomberos", "tags": ["rescate"] },
+    { "key": "10-5", "label": "Materiales peligrosos",                  "tags": ["hazmat"] },
+    { "key": "10-6", "label": "Emanación de gas",                       "tags": ["hazmat"] },
+    { "key": "10-7", "label": "Llamado eléctrico",                       "tags": ["otros"] },
+    { "key": "10-8", "label": "Llamado no clasificado",                  "tags": ["otros"] },
+    { "key": "10-9", "label": "Llamado a otros servicios (no emergencia)", "tags": ["otros"] },
+    { "key": "10-10", "label": "Remoción de escombros o rebrote",       "tags": ["otros"] },
+    { "key": "10-11", "label": "Servicio aéreo",                        "tags": ["otros"] },
+    { "key": "10-12", "label": "Apoyo a otros Cuerpos de Bomberos",     "tags": ["otros"] },
+    { "key": "10-14", "label": "Accidente de aviación en área urbana",  "tags": ["otros"] },
+
+    { "key": "QAP", "label": "En escucha",                             "tags": ["Q"] },
+    { "key": "QTH", "label": "Ubicación/posición",                     "tags": ["Q"] },
+    { "key": "QSL", "label": "Acuso recibo / confirmación",            "tags": ["Q"] },
+    { "key": "QSY", "label": "Cambie de frecuencia",                    "tags": ["Q"] },
+    { "key": "QRV", "label": "Listo para operar",                      "tags": ["Q"] },
+    { "key": "QRZ", "label": "¿Quién me llama?",                        "tags": ["Q"] },
+    { "key": "QRM", "label": "Interferencia por otras estaciones",     "tags": ["Q"] },
+    { "key": "QRN", "label": "Interferencias atmosféricas / ruido",    "tags": ["Q"] },
+    { "key": "QRT", "label": "Cese transmisiones",                      "tags": ["Q"] }
+  ],
+  "synonyms": {
+    "en-escucha": "QAP",
+    "en_escucha": "QAP",
+    "ubicacion": "QTH",
+    "ubicación": "QTH",
+    "llamado-estructural": "10-0",
+    "rescate-vehicular": "10-4"
+  }
+}
+

@@ -29,7 +29,65 @@ export function Header() {
             <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Seguridad</a>
             <a href="#donate" className="text-gray-700 hover:text-red-600 transition-colors">Donaciones</a>
             <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
+            <a
+              href="/radio-live.html"
+              onClick={(e) => {
+                e.preventDefault();
+                const features = [
+                  "popup",
+                  "width=520",
+                  "height=760",
+                  "menubar=no",
+                  "toolbar=no",
+                  "location=no",
+                  "status=no",
+                  "scrollbars=yes",
+                  "resizable=yes",
+                ].join(",");
+                const w = window.open("/radio-live.html", "Radio Live – CBT", features);
+                try { w?.focus(); } catch (_) {}
+              }}
+              className="text-red-600 font-semibold hover:text-red-700 transition-colors"
+            >
+              <span className="relative inline-flex items-center gap-2">
+                <span className="relative inline-flex">
+                  <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-red-500 opacity-75 animate-ping"></span>
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600"></span>
+                </span>
+                <span>Radio Live</span>
+              </span>
+            </a>
           </nav>
+
+          {/* Mobile: botón Radio Live visible */}
+          <a
+            href="/radio-live.html"
+            onClick={(e) => {
+              e.preventDefault();
+              const features = [
+                "popup",
+                "width=520",
+                "height=760",
+                "menubar=no",
+                "toolbar=no",
+                "location=no",
+                "status=no",
+                "scrollbars=yes",
+                "resizable=yes",
+              ].join(",");
+              const w = window.open("/radio-live.html", "Radio Live – CBT", features);
+              try { w?.focus(); } catch (_) {}
+            }}
+            className="md:hidden mr-3 inline-flex items-center gap-2 rounded-full border bg-white px-3 py-2 text-sm font-medium shadow hover:shadow-md text-red-700"
+            aria-label="Abrir Radio Live"
+            title="Abrir Radio Live"
+          >
+            <span className="relative inline-flex">
+              <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-red-500 opacity-75 animate-ping"></span>
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600"></span>
+            </span>
+            Radio Live
+          </a>
 
           <Button className="bg-red-600 hover:bg-red-700 text-white">
             <Phone className="w-8 h-4 mr-2" />
@@ -40,4 +98,3 @@ export function Header() {
     </header>
   );
 }
-
