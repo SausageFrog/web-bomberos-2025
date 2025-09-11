@@ -178,31 +178,35 @@
       function stripAccents(str){ try { return str.normalize('NFD').replace(/\p{Diacritic}/gu,''); } catch { return str; } }
       function normalizeKeyInput(value) { return stripAccents(String(value||'')).trim().toLowerCase().replace(/[\.\s]+/g,'-').replace(/-+/g,'-').replace(/^-|-$|[^a-z0-9-]/g,''); }
       function highlightPrefix(text, prefix){ if(!prefix) return escapeHTML(text); const i=text.toLowerCase().indexOf(prefix.toLowerCase()); if(i<0) return escapeHTML(text); const a=escapeHTML(text.slice(0,i)); const b=escapeHTML(text.slice(i,i+prefix.length)); const c=escapeHTML(text.slice(i+prefix.length)); return `${a}<mark class="hl">${b}</mark>${c}`; }
+      function highlightContains(text, query){ if(!query) return escapeHTML(text); const t=text.toLowerCase(), q=query.toLowerCase(); const i=t.indexOf(q); if(i<0) return escapeHTML(text); const a=escapeHTML(text.slice(0,i)); const b=escapeHTML(text.slice(i,i+q.length)); const c=escapeHTML(text.slice(i+q.length)); return `${a}<mark class="hl">${b}</mark>${c}`; }
 
       // ——— Búsqueda ———
       const searchInput = $('#searchInput');
       const results = $('#results');
       let ALL_CODES = {};
       let SYNONYMS = {};
+      let CODE_LIST = [];
 
-      function rowHTML(code, desc, qPrefix='') { const c=highlightPrefix(code,qPrefix); const d=escapeHTML(desc); return `<div class=\"res-row\"><span class=\"badge\">${c}</span><span class=\"desc\">${d}</span></div>`; }
-      function resolveKey(input){ const n=normalizeKeyInput(input); if(ALL_CODES[n]) return n; const alias=SYNONYMS[n]; if(alias){ const n2=normalizeKeyInput(alias); if(ALL_CODES[n2]) return n2; } return n; }
+      function rowHTML(code, desc, qPrefix='', qInLabel='') { const c=highlightPrefix(code,qPrefix); const d=qInLabel?highlightContains(desc,qInLabel):escapeHTML(desc); return `<div class=\"res-row\"><span class=\"badge\">${c}</span><span class=\"desc\">${d}</span></div>`; }
+      function resolveKey(input){ const n=normalizeKeyInput(input); if(ALL_CODES[n]) return n; const vars=[n,n.replace(/-a-/g,'-'),n.replace(/-de-/g,'-'),n.replace(/-la-/g,'-')]; for(const v of vars){ const alias=SYNONYMS[v]; if(alias){ const n2=normalizeKeyInput(alias); if(ALL_CODES[n2]) return n2; } } return n; }
 
       function renderResults(qRaw){
         const q0=normalizeKeyInput(qRaw);
         const q=resolveKey(q0);
         const exact=q && ALL_CODES[q];
         const keys=Object.keys(ALL_CODES);
-        const suggestions=(!exact && q)? keys.filter(k=>k.startsWith(q)).sort():[];
+        const prefix=(!exact && q)? keys.filter(k=>k.startsWith(q)).sort():[];
+        const labelMatches=(!exact && q)? CODE_LIST.filter(it=>it.labelNorm.includes(q) && !prefix.includes(it.key)).map(it=>it.key):[];
+        const suggestions=[...prefix,...labelMatches];
         let html='';
         if(!q){
           html+=`<div class=\"muted\">Escribe una clave (ej: <span class=\"badge\">10-4</span> o <span class=\"badge\">qap</span>) o selecciona una de las comunes:</div>`;
-          const commons=['10-0','10-3','10-4','10-5','10-6','10-12','qap','qth'];
+          const commons=['0-6','0-7','10-3','10-4','10-7','10-12','qap','qth'];
           html+=commons.filter(k=>ALL_CODES[k]).map(k=>rowHTML(k,ALL_CODES[k],'')).join('');
         } else if (exact) {
-          html+=rowHTML(q,ALL_CODES[q],q);
+          html+=rowHTML(q,ALL_CODES[q],q,'');
         } else if (suggestions.length) {
-          html+=`<div class=\"muted\">Sugerencias</div>`+suggestions.map(k=>rowHTML(k,ALL_CODES[k],q)).join('');
+          html+=`<div class=\"muted\">Resultados</div>`+suggestions.map(k=>{ const inLabel=(CODE_LIST.find(it=>it.key===k)?.labelNorm.includes(q))?q:''; return rowHTML(k,ALL_CODES[k],q,inLabel); }).join('');
         } else {
           html+=`<div class=\"muted\">Sin resultados para <span class=\"badge\">${escapeHTML(q)}</span></div>`;
         }
@@ -214,13 +218,13 @@
           const res=await fetch('/data/radio-codes.temuco.json',{cache:'force-cache'});
           if(!res.ok) throw new Error('HTTP '+res.status);
           const data=await res.json();
-          const dict={};
-          (data.codes||[]).forEach(it=>{ const k=normalizeKeyInput(it.key); dict[k]=it.label; });
+          const dict={}; const list=[];
+          (data.codes||[]).forEach(it=>{ const k=normalizeKeyInput(it.key); const lbl=String(it.label||''); dict[k]=lbl; list.push({key:k,label:lbl,labelNorm:stripAccents(lbl.toLowerCase())}); });
           const syn={}; const s=data.synonyms||{}; Object.keys(s).forEach(k=>{ syn[normalizeKeyInput(k)]=s[k]; });
-          ALL_CODES={...dict}; SYNONYMS={...syn};
+          ALL_CODES={...dict}; SYNONYMS={...syn}; CODE_LIST=list;
         } catch(e){
           ALL_CODES={...ALL_CODES_FALLBACK};
-          SYNONYMS={'en-escucha':'QAP','ubicacion':'QTH'};
+          SYNONYMS={'en-escucha':'QAP','ubicacion':'QTH','regrese-cuartel':'0-10'};
         }
       }
 

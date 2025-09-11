@@ -4,6 +4,17 @@ import logo from "./img/logo_CBT_1600_2.png";
 import { site } from "../content/site";
 
 export function Header() {
+  const openRadio = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const w = 520, h = 760;
+    const y = (window.top?.outerHeight ? Math.max(0, (window.top.outerHeight - h) / 2) : 0);
+    const x = (window.top?.outerWidth ? Math.max(0, (window.top.outerWidth - w) / 2) : 0);
+    window.open(
+      "/radio-live.html",
+      "Radio Live – CBT",
+      `popup=yes,width=${w},height=${h},left=${x},top=${y},menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes`
+    );
+  };
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,61 +37,19 @@ export function Header() {
             <a href="#services" className="text-gray-700 hover:text-red-600 transition-colors">Servicios</a>
             <a href="#authorities" className="text-gray-700 hover:text-red-600 transition-colors">Autoridades</a>
             <a href="#units" className="text-gray-700 hover:text-red-600 transition-colors">Unidades</a>
+            <a href="/companias.html" className="text-gray-700 hover:text-red-600 transition-colors">Compañías</a>
             <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Seguridad</a>
             <a href="#donate" className="text-gray-700 hover:text-red-600 transition-colors">Donaciones</a>
             <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
-            <a
-              href="/radio-live.html"
-              onClick={(e) => {
-                e.preventDefault();
-                const features = [
-                  "popup",
-                  "width=520",
-                  "height=760",
-                  "menubar=no",
-                  "toolbar=no",
-                  "location=no",
-                  "status=no",
-                  "scrollbars=yes",
-                  "resizable=yes",
-                ].join(",");
-                const w = window.open("/radio-live.html", "Radio Live – CBT", features);
-                try { w?.focus(); } catch (_) {}
-              }}
-              className="text-red-600 font-semibold hover:text-red-700 transition-colors"
-            >
-              <span className="relative inline-flex items-center gap-2">
-                <span className="relative inline-flex">
-                  <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-red-500 opacity-75 animate-ping"></span>
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600"></span>
-                </span>
-                <span>Radio Live</span>
-              </span>
-            </a>
           </nav>
 
-          {/* Mobile: botón Radio Live visible */}
+          {/* Único botón Radio Live, visible en desktop y mobile */}
           <a
             href="/radio-live.html"
-            onClick={(e) => {
-              e.preventDefault();
-              const features = [
-                "popup",
-                "width=520",
-                "height=760",
-                "menubar=no",
-                "toolbar=no",
-                "location=no",
-                "status=no",
-                "scrollbars=yes",
-                "resizable=yes",
-              ].join(",");
-              const w = window.open("/radio-live.html", "Radio Live – CBT", features);
-              try { w?.focus(); } catch (_) {}
-            }}
-            className="md:hidden mr-3 inline-flex items-center gap-2 rounded-full border bg-white px-3 py-2 text-sm font-medium shadow hover:shadow-md text-red-700"
-            aria-label="Abrir Radio Live"
-            title="Abrir Radio Live"
+            onClick={openRadio}
+            className="mr-3 inline-flex items-center gap-2 rounded-full border bg-white px-3 py-2 text-sm font-semibold shadow hover:shadow-md text-red-700"
+            aria-label="Abrir Radio en vivo"
+            title="Abrir Radio en vivo"
           >
             <span className="relative inline-flex">
               <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-red-500 opacity-75 animate-ping"></span>
