@@ -16,12 +16,18 @@ export function Header() {
     );
   };
   return (
-    <header className="bg-white shadow-sm border-b">
+    <header className="site-header bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src={logo} alt="Logo" className="w-12 h-12" />
+            <div className="flex items-center justify-center flex-shrink-0">
+              <img
+                src={logo}
+                alt="Cuerpo de Bomberos de Temuco"
+                className="site-logo h-10 md:h-12 w-auto object-contain select-none shrink-0"
+                decoding="async"
+                fetchPriority="high"
+              />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">{site.organization.name}</h1>
