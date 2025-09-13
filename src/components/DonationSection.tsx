@@ -37,11 +37,19 @@ export function DonationSection() {
               <CardTitle>Otras formas de aportar</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-gray-700">Puedes aportar en línea o coordinar donaciones en especie y patrocinios.</p>
+              <p className="text-gray-700">Puedes aportar en línea directamente a la compañia.</p>
+              <div className="justify-center flex w-15 h-15">
+                <a href="https://app.payku.cl/suscripcion/index?idplan=3890&verif=1c83a8e5" target="_blank">
+                  <Button>Quiero donar</Button>
+                </a>  
+              </div>
               <div>
-                <a href={site.donation.donationLink} target="_blank" rel="noreferrer">
-                  <Button className="bg-yellow-600 hover:bg-yellow-700 text-white w-full">Quiero donar</Button>
+                <p className="text-sm text-gray-500 pt-2">Aportar a las demas compañias.</p>
+                <div className="justify-center flex w-15 h-15">
+                <a href="https://socioscooperadores.bomberostemuco.cl/" target="_blank">
+                  <Button>Aportar a las demas compañias</Button>
                 </a>
+              </div>
               </div>
               <div className="text-sm text-gray-500">
                 Si tu empresa quiere colaborar, escríbenos al correo de contacto para gestionar certificados y recepción.
