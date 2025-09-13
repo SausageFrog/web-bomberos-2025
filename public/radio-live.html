@@ -45,10 +45,28 @@
       .muted { color: var(--muted); }
       .field { display:flex; align-items:center; gap:8px; border:1px solid var(--border); border-radius:8px; padding:8px 10px; background:#0f1012; }
       .field input { flex:1; background:transparent; border:0; outline:0; color:#fff; font-size:14px; }
-      .results { display:flex; flex-direction:column; gap:8px; max-height: 340px; overflow:auto; }
+      /* Ventana contenida y scrolleable para resultados */
+      .results {
+        display:flex;
+        flex-direction:column;
+        gap:8px;
+        max-height: clamp(340px, 58vh, 560px);
+        overflow-y:auto;
+        overscroll-behavior:contain;
+        -webkit-overflow-scrolling:touch;
+        padding-block: 4px;
+      }
+      /* Salvaguardas contra clipping en contenedores padres */
+      .card, .content, .grid, body, html { min-height: 0; }
       .res-row { display:flex; align-items:center; gap:10px; padding:8px 10px; border:1px solid var(--border); border-radius:8px; background:#0f1012; }
-      .badge { display:inline-flex; align-items:center; justify-content:center; min-width:48px; height:24px; padding:0 10px; border-radius:999px; background:#15171b; border:1px solid #23262c; font-weight:700; color:#e5e7eb; }
-      .desc { color:#e5e7eb; font-size:14px; }
+      .badge {
+        display:inline-flex; align-items:center; justify-content:center;
+        min-width:48px; height:24px; padding:0 10px; border-radius:999px;
+        background:#15171b; border:1px solid #23262c; font-weight:700; color:#e5e7eb;
+        white-space: nowrap; hyphens: none; word-break: keep-all; flex: 0 0 auto;
+        font-variant-numeric: tabular-nums;
+      }
+      .desc { color:#e5e7eb; font-size:14px; flex:1 1 auto; }
       .hl { background: #7f1d1d; color: #fff; padding: 0 2px; border-radius: 3px; }
       .badge.offline { background:#0f3b18; border-color:#14532d; color:#86efac }
       .footer { text-align:center; margin-top: 8px; font-size: 12px; color: var(--muted); }
@@ -200,9 +218,19 @@
         const suggestions=[...prefix,...labelMatches];
         let html='';
         if(!q){
-          html+=`<div class=\"muted\">Escribe una clave (ej: <span class=\"badge\">10-4</span> o <span class=\"badge\">qap</span>) o selecciona una de las comunes:</div>`;
-          const commons=['0-6','0-7','10-3','10-4','10-7','10-12','qap','qth'];
-          html+=commons.filter(k=>ALL_CODES[k]).map(k=>rowHTML(k,ALL_CODES[k],'')).join('');
+          // Mostrar TODAS las claves por defecto, ordenadas.
+          const keys = Object.keys(ALL_CODES).sort((a,b)=>{
+            const isQa = /^[qQ]/.test(a), isQb = /^[qQ]/.test(b);
+            if(isQa !== isQb) return isQa - isQb; // Numéricas primero, luego Q-codes
+            const pa = a.split('-').map(n=>Number(n));
+            const pb = b.split('-').map(n=>Number(n));
+            if(!Number.isNaN(pa[0]) && !Number.isNaN(pb[0])){
+              return (pa[0]-pb[0]) || ((pa[1]||0) - (pb[1]||0)) || ((pa[2]||0) - (pb[2]||0));
+            }
+            return a.localeCompare(b);
+          });
+          html += `<div class=\"muted\">Escribe una clave (ej: <span class=\"badge\">10-4</span> o <span class=\"badge\">qap</span>) o recorre la lista completa:</div>`;
+          html += keys.map(k=>rowHTML(k,ALL_CODES[k],'')).join('');
         } else if (exact) {
           html+=rowHTML(q,ALL_CODES[q],q,'');
         } else if (suggestions.length) {

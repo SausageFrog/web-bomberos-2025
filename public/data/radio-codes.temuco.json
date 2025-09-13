@@ -14,11 +14,25 @@
     { "key": "0-10", "label": "Regrese a cuartel",                               "tags": ["retorno"] },
     { "key": "0-11", "label": "Guardia preventiva en cuartel",                  "tags": ["guardia"] },
 
+    { "key": "5-3",  "label": "Frecuencia de trabajo CBT",                      "tags": ["radio"] },
+
+    { "key": "6-7",  "label": "Situación controlada",                           "tags": ["estado"] },
+    { "key": "6-8",  "label": "Disponible/operativa la máquina",                 "tags": ["estado"] },
+    { "key": "6-9",  "label": "Retorno a cuartel",                              "tags": ["retorno"] },
+
     { "key": "10-0",  "label": "Inflamación de ducto de chimenea",              "tags": ["incendio"] },
     { "key": "10-1",  "label": "Incendio en vehículo o medio de transporte",    "tags": ["incendio"] },
     { "key": "10-2",  "label": "Incendio forestal/pastizales/vegetación",       "tags": ["incendio"] },
     { "key": "10-3",  "label": "Rescate de personas atrapadas (no vehicular)",  "tags": ["rescate"] },
+    { "key": "10-3-0","label": "Posible paro cardiorrespiratorio",              "tags": ["rescate"] },
+    { "key": "10-3-1","label": "Presunta desgracia / extremidad o anillo atrapado", "tags": ["rescate"] },
+    { "key": "10-3-2","label": "Persona encerrada en vivienda o departamento",  "tags": ["rescate"] },
+    { "key": "10-3-7","label": "Rescate en ascensor",                           "tags": ["rescate"] },
     { "key": "10-4",  "label": "Rescate vehicular",                              "tags": ["rescate"] },
+    { "key": "10-4-1","label": "Rescate vehicular con hasta 3 lesionados",      "tags": ["rescate"] },
+    { "key": "10-4-2","label": "Rescate vehicular con múltiples lesionados o >3 vehículos", "tags": ["rescate"] },
+    { "key": "10-4-6","label": "Rescate vehicular con camión 3/4 o HAZMAT involucrado", "tags": ["rescate","hazmat"] },
+    { "key": "10-4-7","label": "Rescate vehicular con vehículos de Bomberos involucrados", "tags": ["rescate"] },
     { "key": "10-5",  "label": "Materiales peligrosos (HAZMAT)",                "tags": ["hazmat"] },
     { "key": "10-6",  "label": "Emanación/fuga de gas",                          "tags": ["gas"] },
     { "key": "10-7",  "label": "Incendio estructural",                           "tags": ["incendio"] },
@@ -27,6 +41,7 @@
     { "key": "10-10", "label": "Remoción de escombros / rebrote",               "tags": ["postincendio"] },
     { "key": "10-11", "label": "Servicio aéreo (helicóptero/avión)",            "tags": ["apoyo"] },
     { "key": "10-12", "label": "Apoyo a otros Cuerpos de Bomberos",             "tags": ["mutua-ayuda"] },
+    { "key": "10-14", "label": "Accidente de aviación en área urbana",          "tags": ["aviacion"] },
 
     { "key": "QAP", "label": "En escucha / atento",                 "tags": ["Q"] },
     { "key": "QTH", "label": "Ubicación / posición",                "tags": ["Q"] },
@@ -69,6 +84,24 @@
     "fuera-de-servicio": "0-8",
     "en-servicio": "0-9",
     "regrese-cuartel": "0-10",
-    "guardia-cuartel": "0-11"
+    "guardia-cuartel": "0-11",
+
+    "frecuencia": "5-3",
+
+    "situacion-controlada": "6-7",
+    "disponible-operativa": "6-8",
+    "retorno-cuartel": "6-9",
+
+    "paro-cardiorrespiratorio": "10-3-0",
+    "presunta-desgracia": "10-3-1",
+    "persona-encerrada": "10-3-2",
+    "rescate-ascensor": "10-3-7",
+
+    "rescate-vehicular-3-lesionados": "10-4-1",
+    "rescate-vehicular-multiples": "10-4-2",
+    "rescate-vehicular-hazmat": "10-4-6",
+    "rescate-vehicular-bomberos": "10-4-7",
+
+    "accidente-aviacion": "10-14"
   }
 }

@@ -1,4 +1,5 @@
-const CACHE_NAME = 'radio-cbt-v1';
+// Bump de versión para forzar actualización del HTML y datos
+const CACHE_NAME = 'radio-cbt-v3';
 const APP_SHELL = [
   '/radio-live.html',
   '/manifest.webmanifest',
@@ -20,18 +21,31 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const { request } = e;
   const url = new URL(request.url);
+
   // Nunca cachear el player/stream de Broadcastify
   if (/broadcastify\.com/.test(url.hostname)) return; // network only
 
-  // Cache First para nuestros recursos
-  if (request.method === 'GET') {
+  if (request.method !== 'GET') return; // solo GET
+
+  // Network First para documentos/HTML (incluye /radio-live.html): evita servir una versión vieja
+  const isHTML = request.mode === 'navigate' || request.destination === 'document' || url.pathname.endsWith('.html');
+  if (isHTML) {
     e.respondWith(
-      caches.match(request).then((cached) => cached || fetch(request).then((resp) => {
+      fetch(request).then((resp) => {
         const copy = resp.clone();
         caches.open(CACHE_NAME).then((c) => c.put(request, copy)).catch(() => {});
         return resp;
-      }).catch(() => cached))
+      }).catch(() => caches.match(request))
     );
+    return;
   }
-});
 
+  // Cache First para otros recursos estáticos (JSON, manifest, etc.)
+  e.respondWith(
+    caches.match(request).then((cached) => cached || fetch(request).then((resp) => {
+      const copy = resp.clone();
+      caches.open(CACHE_NAME).then((c) => c.put(request, copy)).catch(() => {});
+      return resp;
+    }).catch(() => cached))
+  );
+});
