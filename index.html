@@ -2,69 +2,12 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Primera Compañía – Cuerpo de Bomberos de Temuco</title>
-    <meta name="description" content="Cuerpo de Bomberos de Temuco – Primera Compañía. ‘Labor Omnia Vincit’. Emergencias 132." />
-    <link rel="preload" href="/assets/css/main.css" as="style" />
-    <link rel="stylesheet" href="/assets/css/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primera Compañía - Bomberos Temuco</title>
   </head>
   <body>
-    <header class="site-header">
-      <div class="bar">
-        <a class="brand" href="/" aria-label="Inicio – Cuerpo de Bomberos de Temuco">
-          <img src="/assets/img/logo.svg" alt="Cuerpo de Bomberos de Temuco" decoding="async" fetchpriority="high" />
-        </a>
-        <nav class="nav" aria-label="Principal">
-          <a href="/companias.html">Compañías</a>
-          <a href="/claves.html">Claves</a>
-          <a id="radioBtn" href="/radio-live.html" class="btn btn-ghost" aria-label="Abrir Radio Live">
-            <span class="dot" aria-hidden="true"></span> Radio Live
-          </a>
-          <a href="tel:132" class="btn btn-primary" aria-label="Llamar a emergencias 132">Emergencias 132</a>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero" style="background-image:url('/assets/img/hero.webp');">
-        <div class="inner">
-          <div>
-            <h1>Cuerpo de Bomberos de Temuco<br/>Primera Compañía</h1>
-            <p>“Labor Omnia Vincit — Todo lo vence el trabajo”. Fundada el 22 de julio de 1900.</p>
-            <div style="display:flex; gap:12px; flex-wrap:wrap">
-              <a href="tel:132" class="btn btn-primary" aria-label="Llamar 132 – Emergencias">132 · Emergencias</a>
-              <a href="#contactos" class="btn btn-ghost anchor" aria-label="Ver contactos de emergencia">Contactos</a>
-            </div>
-          </div>
-          <aside id="contactos" class="card" aria-labelledby="c-title">
-            <div id="c-title" class="title" style="font-weight:700; margin-bottom:8px">Contactos de emergencia</div>
-            <ul style="margin:0; padding-left:18px">
-              <li>Bomberos: 132</li>
-              <li>Central (Referencia): +56 45 221 0116</li>
-              <li>Comandancia (Referencia): +56 45 221 4702</li>
-            </ul>
-          </aside>
-        </div>
-      </section>
-
-      <section class="services" aria-label="Servicios">
-        <article class="card">
-          <h3 style="margin:0 0 6px">Prevención y seguridad</h3>
-          <p class="text-muted" style="margin:0">Recomendaciones para tu hogar y comunidad.</p>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 6px">Apoyo a emergencias</h3>
-          <p class="text-muted" style="margin:0">Respuesta rápida y coordinada ante incidentes.</p>
-        </article>
-        <article class="card">
-          <h3 style="margin:0 0 6px">Voluntariado</h3>
-          <p class="text-muted" style="margin:0">Infórmate sobre cómo postular.</p>
-        </article>
-      </section>
-    </main>
-
-    <script src="/assets/js/main.js" defer></script>
-    <script src="/assets/js/radio.js" defer></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
   </html>
+
