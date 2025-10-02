@@ -27,7 +27,7 @@ export const site = {
   company: {
     displayName: "Primera Compañía",
     motto: "Labor Omnia Vincit – Todo lo vence el trabajo",
-    foundedOn: "22 de julio de 1900", // Actualiza si corresponde
+    foundedOn: "22 de julio de 1900",
     shortDescription:
       "Compañía de tradición y servicio voluntario dedicada al combate de incendios, rescate y prevención en Temuco.",
   },
