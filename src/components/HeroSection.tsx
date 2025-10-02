@@ -5,7 +5,7 @@ import { site } from "../content/site";
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative bg-gradient-to-r from-red-900 to-red-700 text-white">
+    <section id="home" className="relative max-w-screen-lg bg-gradient-to-r from-red-900 to-red-700 text-white">
       <div className="absolute inset-0 bg-black/40"></div>
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -17,7 +17,7 @@ export function HeroSection() {
           <div>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               {site.organization.name}
-              <span className="block text-red-300">{site.company.displayName}</span>
+              <span className="block text-white-300">{site.company.displayName}</span>
             </h1>
             <h4 className="text-2xl lg:text-3xl font-semibold mb-6">
               “{site.company.motto}”
@@ -30,7 +30,7 @@ export function HeroSection() {
                 {site.emergency.number} · Emergencias
               </Button>
               <a href="#company">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-900">
+                <Button size="lg" variant="outline" className="border-white hover:bg-white hover:text-red-900">
                   Más información
                 </Button>
               </a>
@@ -38,24 +38,30 @@ export function HeroSection() {
 
             <div className="grid grid-cols-3 gap-6 text-center">
               <div>
-                <Clock className="w-8 h-8 mx-auto mb-2 text-red-300" />
+                <Clock className="w-8 h-8 mx-auto mb-2" />
                 <div className="font-bold">24/7</div>
                 <div className="text-sm text-gray-300">Respuesta</div>
               </div>
               <div>
-                <Shield className="w-8 h-8 mx-auto mb-2 text-red-300" />
+                <Shield className="w-8 h-8 mx-auto mb-2" />
                 <div className="font-bold">Voluntariado</div>
                 <div className="text-sm text-gray-300">Profesionalismo</div>
               </div>
               <div>
-                <Phone className="w-8 h-8 mx-auto mb-2 text-red-300" />
+                <Phone className="w-8 h-8 mx-auto mb-2" />
                 <div className="font-bold">Rápida</div>
                 <div className="text-sm text-gray-300">Respuesta</div>
               </div>
             </div>
-          </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+  );
+}
 
-          <div className="lg:block hidden">
+/* Bloque rojo de contactos de emergencia - ELIMINADO
+<div className="lg:block hidden">
             <div className="bg-red-600 p-8 rounded-lg shadow-2xl">
               <h3 className="text-2xl font-bold mb-4">Contactos de emergencia</h3>
               <div className="space-y-4">
@@ -78,9 +84,4 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
+*/

@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import { Phone } from "lucide-react";
 import logo from "./img/logo_CBT_1600_2.png";
 import { site } from "../content/site";
+import { Circle } from "lucide-react";
 
 export function Header() {
   return (
@@ -24,12 +25,14 @@ export function Header() {
             <a href="#home" className="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
             <a href="#company" className="text-gray-700 hover:text-red-600 transition-colors">Compañía</a>
             <a href="#services" className="text-gray-700 hover:text-red-600 transition-colors">Servicios</a>
-            <a href="#authorities" className="text-gray-700 hover:text-red-600 transition-colors">Autoridades</a>
-            <a href="#units" className="text-gray-700 hover:text-red-600 transition-colors">Unidades</a>
-            <a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Seguridad</a>
             <a href="#donate" className="text-gray-700 hover:text-red-600 transition-colors">Donaciones</a>
             <a href="#contact" className="text-gray-700 hover:text-red-600 transition-colors">Contacto</a>
           </nav>
+
+          <Button className="bg-white border border-red-600 text-black-600 hover:shadow-lg hover:bg-red-50">
+            <Circle className="w-4 h-4 mr-5 animate-pulse" />
+            Radio en vivo
+          </Button>
 
           <Button className="bg-red-600 hover:bg-red-700 text-white">
             <Phone className="w-8 h-4 mr-2" />
@@ -41,3 +44,9 @@ export function Header() {
   );
 }
 
+
+/* Secciones eliminadas del menú de navegación:
+<a href="#authorities" className="text-gray-700 hover:text-red-600 transition-colors">Autoridades</a>
+<a href="#units" className="text-gray-700 hover:text-red-600 transition-colors">Unidades</a>
+<a href="#safety" className="text-gray-700 hover:text-red-600 transition-colors">Seguridad</a>
+*/
