@@ -4978,3 +4978,15 @@ html {
   scroll-behavior: smooth;
 }
 
+
+/* ==== Fix logo header (proporciones y nitidez) ==== */
+.site-header .site-logo{
+  height: 2.5rem !important;   /* ~40px móvil */
+  width: auto !important;       /* conserva proporción */
+  object-fit: contain !important;
+  flex-shrink: 0 !important;    /* no se achica en flex */
+  display: block;
+}
+@media (min-width: 768px){
+  .site-header .site-logo{ height: 3rem !important; } /* ~48px desktop */
+}

@@ -16,6 +16,7 @@ export type Unit = {
   plate?: string
   notes?: string
   features?: string[]
+  detailsUrl?: string
 };
 
 export const site = {
@@ -89,8 +90,39 @@ export const site = {
     ] as Authority[],
   },
   units: [
-    { code: "B-1", type: "Por definir", year: "", brand: "", model: "", notes: "Completar con datos del carro bomba." },
-    { code: "RX-1", type: "Por definir", year: "", brand: "", model: "", notes: "Completar con datos del carro de rescate." },
+    {
+      code: "B-1",
+      type: "Bomba Urbana",
+      brand: "",
+      model: "",
+      year: "",
+      plate: "",
+      features: [],
+      notes: "Completar con datos del carro bomba.",
+      detailsUrl: "/units/b-1.html",
+    },
+    {
+      code: "Q-1",
+      type: "Quinta (Escala + Bomba)",
+      brand: "",
+      model: "",
+      year: "",
+      plate: "",
+      features: [],
+      notes: "Completar con datos del carro escala.",
+      detailsUrl: "/units/q-1.html",
+    },
+    {
+      code: "M-1",
+      type: "Móvil de apoyo",
+      brand: "",
+      model: "",
+      year: "",
+      plate: "",
+      features: [],
+      notes: "Completar con datos del móvil de apoyo.",
+      detailsUrl: "/units/m-1.html",
+    },
   ] as Unit[],
   training: {
     days: ["Por definir"], // Ej: "Miércoles 20:00–22:00"
@@ -114,4 +146,3 @@ export const site = {
 } as const;
 
 export type SiteContent = typeof site;
-

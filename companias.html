@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Compañías – Cuerpo de Bomberos de Temuco</title>
+    <meta name="description" content="Listado de compañías del Cuerpo de Bomberos de Temuco con enlaces oficiales e institucionales." />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <style>
+      /* Ajustes locales para la vista de compañías */
+      .toolbar{display:flex;gap:12px;align-items:center;max-width:1200px;margin:16px auto;padding:0 16px}
+      .field{display:flex;align-items:center;gap:8px;border:1px solid #eee;border-radius:8px;padding:8px 10px;background:#fafafa;flex:1}
+      .field input{flex:1;background:transparent;border:0;outline:0;color:#111;font-size:14px}
+      .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+      .card img{inline-size:100%;block-size:auto;border-radius:12px}
+      .card h3{margin:12px 0 8px 0;font-size:18px}
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="bar">
+        <a class="brand" href="/" aria-label="Inicio – Cuerpo de Bomberos de Temuco">
+          <img src="/assets/img/logo.svg" alt="Cuerpo de Bomberos de Temuco" decoding="async" />
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <a href="/companias.html" aria-current="page">Compañías</a>
+          <a href="/claves.html">Claves</a>
+          <a id="radioBtn" href="/radio-live.html" class="btn btn-ghost" aria-label="Abrir Radio Live">
+            <span class="dot" aria-hidden="true"></span> Radio Live
+          </a>
+          <a href="tel:132" class="btn btn-primary">Emergencias 132</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <div class="field" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21L15.8033 15.8033M18 10.5C18 14.0899 15.0899 17 11.5 17C7.91015 17 5 14.0899 5 10.5C5 6.91015 7.91015 4 11.5 4C15.0899 4 18 6.91015 18 10.5Z" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <input id="q" type="text" placeholder="Buscar: 1, Primera, Sexta… (/, Esc)" aria-label="Buscar compañía" />
+      </div>
+      <a class="btn btn-ghost" href="/" rel="noopener">← Volver</a>
+    </div>
+
+    <main class="grid" aria-label="Compañías">
+      <div id="list" class="grid" style="margin:0 auto; max-width:1200px; padding:0 16px"></div>
+    </main>
+
+    <script>
+      const $ = (s,r=document)=>r.querySelector(s);
+      const escapeHTML = (s)=>String(s).replace(/[&<>"']/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]));
+      function stripAccents(str){ try{ return str.normalize('NFD').replace(/\p{Diacritic}/gu,''); } catch{ return str; } }
+      function norm(s){ return stripAccents(String(s||'').trim().toLowerCase()); }
+
+      async function load(){
+        let data;
+        try {
+          const res = await fetch('/data/companias.temuco.json', { cache: 'force-cache' });
+          data = await res.json();
+        } catch {
+          data = { companies: [] };
+        }
+        const input = $('#q');
+        const list = $('#list');
+        function render(filter=''){
+          const f = norm(filter);
+          const items = (data.companies||[]).filter(c => !f || norm(c.name).includes(f) || String(c.num).startsWith(f));
+          list.innerHTML = items.map(c => cardHTML(c)).join('') || `<p class="text-muted">Sin resultados</p>`;
+        }
+        function cardHTML(c){
+          const photo = escapeHTML(c.photo || '/assets/img/logo.svg');
+          const name = escapeHTML(c.name || 'Compañía');
+          const num = escapeHTML(c.num);
+          const official = c.official ? `<a class=\"btn btn-ghost\" href=\"${escapeHTML(c.official)}\" target=\"_blank\" rel=\"noopener\">Sitio oficial</a>` : '';
+          const inst = c.institutional ? `<a class=\"btn btn-ghost\" href=\"${escapeHTML(c.institutional)}\" target=\"_blank\" rel=\"noopener\">Sitio institucional</a>` : '';
+          return `<article class=\"card\" aria-label=\"${name}\">\n`+
+            `  <img loading=\"lazy\" src=\"${photo}\" alt=\"${name} – foto\" />\n`+
+            `  <div class=\"body\">\n`+
+            `    <h3>${num}. ${name}</h3>\n`+
+            `    <div class=\"links\">${official}${inst}</div>\n`+
+            `  </div>\n`+
+          `</article>`;
+        }
+        document.addEventListener('keydown', (e)=>{ if(e.key=='/'){ e.preventDefault(); $('#q').focus(); } if(e.key=='Escape'){ input.value=''; render(''); }});
+        input.addEventListener('input', ()=> render(input.value));
+        render('');
+      }
+      load();
+    </script>
+
+    <script src="/assets/js/main.js" defer></script>
+  </body>
+  </html>
