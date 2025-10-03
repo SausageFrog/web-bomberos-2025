@@ -9,7 +9,7 @@ import { DonationSection } from "./components/DonationSection";
 import { AuthoritiesSection } from "./components/AuthoritiesSection";
 import { UnitsSection } from "./components/UnitsSection";
 import { LocationSection } from "./components/LocationSection";
-import News from "./components/News";
+import  News  from "./components/News";
 
 // <ContactSection />
 export default function App() {
