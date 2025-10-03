@@ -4,7 +4,7 @@ import { site } from "../content/site";
 const stats = [
   { icon: Users, number: String(site.stats.volunteers || 0), label: "Voluntarias y voluntarios" },
   { icon: Clock, number: String(site.stats.avgResponseMinutes || 0), label: "Tiempo medio respuesta (min)" },
-  { icon: Award, number: String(site.stats.yearsOfService || 0), label: "Años de servicio" },
+  { icon: Award, number: String(site.stats.yearsOfService || 125), label: "Años de servicio" },
   { icon: MapPin, number: String(site.stats.stations || 1), label: "Cuarteles" },
 ];
 
