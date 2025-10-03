@@ -1,16 +1,49 @@
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import { Phone, Shield, Clock } from "lucide-react";
-import Background from "./img/BomberosTemucoHero.png";
+import Background1 from "./img/BomberosHero1.png";
+import Background2 from "./img/Background/BomberosHero2.jpg"
+import Background3 from "./img/Background/BomberosHero3.jpg"
 import { site } from "../content/site";
 
 export function HeroSection() {
+  const images = [Background1, Background2, Background3]; // tus fotos
+  const [idx, setIdx] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+  // inicia el intervalo
+  timerRef.current = setInterval(() => {
+    setIdx((i) => (i + 1) % images.length);
+  }, 6000);
+    return () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+  }, [idx, images.length]);
+
   return (
-    <section id="home" className="relative max-w-screen-lg bg-gradient-to-r from-red-900 to-red-700 text-white">
-      <div className="absolute inset-0 bg-black/40"></div>
+
+    <section id="home" className="relative isolate text-white overflow-hidden min-h-[70vh]">
+      {/* (opcional) oscurecedor extra encima del fondo */}
+      <div className="absolute inset-0 bg-black/40 -z-10" />
+
+      {/* CAPAS DE FONDO con crossfade */}
+      {images.map((src, i) => (
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${Background})` }}
+        key={src + i}
+        className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+          i === idx ? "opacity-100" : "opacity-0"
+        } -z-20`}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url(${src})`,
+      }}
+      aria-hidden={i !== idx}
       />
+      ))}
+
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

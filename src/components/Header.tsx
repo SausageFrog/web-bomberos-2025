@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { Phone } from "lucide-react";
-import logo from "./img/logo_CBT_1600_2.png";
+import logo from "./img/Logos/logo_CBT_1600_2.png";
 import { site } from "../content/site";
 import { Circle } from "lucide-react";
 

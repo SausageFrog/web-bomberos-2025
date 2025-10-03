@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
 import { site } from "../content/site";
+import Logo from "./img/Logos/logo_CBT_1600_2.png";
 
 export function Footer() {
   return (
@@ -10,18 +11,18 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2 lg:col-span-1">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">{site.company.displayName?.[0] ?? "B"}</span>
+                <div className="w-12 h-12 rounded-full overflow-hidden ring-1 ring-white/15 bg-white/5">
+                  <img
+                  src={Logo}
+                  alt={`${site.organization.name} logo`}
+                  className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">{site.organization.name}</h3>
-                  <h4 className="text-sm text-gray-300">{site.company.displayName}</h4>
-                  <p className="text-gray-400 text-sm">“{site.company.motto}”</p>
                 </div>
               </div>
-              <p className="text-gray-400 mb-6">
-                {site.company.shortDescription}
-              </p>
+
               <div className="flex space-x-4">
                 {site.social.facebook && (
                   <a href={site.social.facebook} target="_blank" rel="noreferrer">
@@ -53,10 +54,6 @@ export function Footer() {
                 <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
                 <li><a href="#company" className="text-gray-400 hover:text-white transition-colors">Compañía</a></li>
                 <li><a href="#services" className="text-gray-400 hover:text-white transition-colors">Servicios</a></li>
-                <li><a href="#authorities" className="text-gray-400 hover:text-white transition-colors">Autoridades</a></li>
-                <li><a href="#units" className="text-gray-400 hover:text-white transition-colors">Unidades</a></li>
-                <li><a href="#safety" className="text-gray-400 hover:text-white transition-colors">Seguridad</a></li>
-                <li><a href="#donate" className="text-gray-400 hover:text-white transition-colors">Donaciones</a></li>
               </ul>
             </div>
 
@@ -97,19 +94,7 @@ export function Footer() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-4">Horario</h4>
-              <ul className="space-y-2">
-                {site.emergency.officeHours.map((h, i) => (
-                  <li key={i} className="text-gray-400 flex justify-between">
-                    <span>{h.label}:</span>
-                    <span className="text-gray-300">{h.value}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </div>     
           </div>
         </div>
 
@@ -130,3 +115,21 @@ export function Footer() {
   );
 }
 
+/*
+       <li><a href="#authorities" className="text-gray-400 hover:text-white transition-colors">Autoridades</a></li>
+                <li><a href="#units" className="text-gray-400 hover:text-white transition-colors">Unidades</a></li>
+                <li><a href="#safety" className="text-gray-400 hover:text-white transition-colors">Seguridad</a></li>
+                <li><a href="#donate" className="text-gray-400 hover:text-white transition-colors">Donaciones</a></li>
+
+                 <div>
+              <h4 className="font-semibold mb-4">Horario</h4>
+              <ul className="space-y-2">
+                {site.emergency.officeHours.map((h, i) => (
+                  <li key={i} className="text-gray-400 flex justify-between">
+                    <span>{h.label}:</span>
+                    <span className="text-gray-300">{h.value}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+*/ 

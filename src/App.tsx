@@ -18,15 +18,14 @@ export default function App() {
       <Header />
       <main>
         <HeroSection />
-        <ServicesSection />
         <AboutSection />
+        <ServicesSection />
         <AuthoritiesSection />
-        <UnitsSection />
         <News />
+        <UnitsSection />
         <FireSafetySection />
         <DonationSection />
         <LocationSection />
-        <ContactSection />
       </main>
       <Footer />
     </div>

@@ -68,7 +68,6 @@ export const site = {
     paragraphs: [
       "La Primera Compañía del Cuerpo de Bomberos de Temuco es una de las unidades fundadoras y ha contribuido históricamente a la protección de la comunidad.",
       "Su lema ‘Labor Omnia Vincit’ refleja la vocación de servicio, disciplina y trabajo en equipo de sus voluntarias y voluntarios.",
-      "Actualiza esta sección con hitos relevantes: fundación, modernización de material mayor, reconocimientos, emergencias significativas y programas comunitarios.",
     ],
   },
   authorities: {
